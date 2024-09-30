@@ -84,6 +84,9 @@ jobs:
          protocol-version: ['2','3']
      env:
        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+       # Set CI to true to avoid pytest from truncating "short test summary info"
+       # (see https://github.com/pytest-dev/pytest/pull/9933)
+       CI: true
      name: Python ${{ matrix.python-version }} RESP${{ matrix.protocol-version }} ${{matrix.test-type}}-${{matrix.connection-type}} tests
      steps:
        - uses: actions/checkout@v4
